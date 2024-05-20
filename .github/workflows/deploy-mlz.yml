@@ -23,7 +23,7 @@ jobs:
         az group create --name mlzResourceGroup --location eastus
         az deployment group create --resource-group mlzResourceGroup --template-uri https://raw.githubusercontent.com/Azure/missionlz/main/src/bicep/main.bicep
       env:
-        AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-        AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+        AZURE_CLIENT_ID: 40647c83-a777-4534-a38f-b2b04d1df23
+        AZURE_TENANT_ID: edcc192c-9867-4ad3-8369-b8c426b308ad
         AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
         AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
