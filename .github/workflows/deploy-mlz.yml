@@ -3,27 +3,27 @@ name: Deploy Azure MLZ
 on:
   push:
     branches:
-      - main  # Change to your target branch if different
+      - main  # This workflow will run whenever there's a push to the main branch
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # This job will run on the latest version of Ubuntu
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2  # This step checks out your repository's code onto the runner
 
     - name: Set up Azure CLI
-      uses: azure/login@v2
+      uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        creds: '${{ secrets.AZURE_CREDENTIALS }}'  # This step logs into Azure using the Azure CLI
 
     - name: Azure CLI script
       run: |
-        az account set --subscription ${{ secrets.subscriptionId }}
-        az group create --name mlzResourceGroup --location eastus
-        az deployment group create --resource-group mlzResourceGroup --template-uri https://raw.githubusercontent.com/Azure/missionlz/main/src/bicep/main.bicep
+        az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}  # This command sets the active subscription
+        az group create --name mlzResourceGroup --location eastus  # This command creates a resource group
+        az deployment group create --resource-group mlzResourceGroup --template-uri https://raw.githubusercontent.com/Azure/missionlz/main/src/bicep/main.bicep  # This command deploys the Azure MLZ
       env:
-        AZURE_CLIENT_ID: ${{ secrets.clientId }}
-        AZURE_TENANT_ID: ${{ secrets.tenantId }}
-        AZURE_CLIENT_SECRET: ${{ secrets.clientSecret }}
-        AZURE_SUBSCRIPTION_ID: ${{ secrets.subscriptionId }}
+        AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+        AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+        AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+        AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}  # These are environment variables for the Azure CLI script
