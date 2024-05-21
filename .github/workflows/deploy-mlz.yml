@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest  # This job will run on the latest version of Ubuntu
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2  # This step checks out your repository's code onto the runner
+      uses: actions/checkout@v4  # This step checks out your repository's code onto the runner
 
     - name: Set up Azure CLI
       uses: azure/login@v1.4.0
