@@ -12,11 +12,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4  # This step checks out your repository's code onto the runner
 
-    - name: Set up Azure CLI
-      uses: azure/login@v1.4.0
-      with:
-        creds: '${{ secrets.AZURE_CREDENTIALS }}'  # This step logs into Azure using the Azure CLI
-
     - name: Azure CLI script
       run: |
         az login --service-principal --username ${{ secrets.AZURE_CLIENT_ID }} --password ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }} 
