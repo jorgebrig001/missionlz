@@ -19,7 +19,7 @@ jobs:
 
     - name: Azure CLI script
       run: |
-        az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        az account set --subscription ${{ secrets.subscriptionId }}
         az group create --name mlzResourceGroup --location eastus
         az deployment group create --resource-group mlzResourceGroup --template-uri https://raw.githubusercontent.com/Azure/missionlz/main/src/bicep/main.bicep
       env:
