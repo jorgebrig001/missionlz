@@ -851,7 +851,7 @@
       {
       "name": "[format('get-naming-convention-{0}', parameters('deploymentNameSuffix'))]",
       "location": "[deployment().location]"
-    }
+      },
       "properties": {
         "expressionEvaluationOptions": {
           "scope": "inner"
