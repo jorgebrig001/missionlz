@@ -848,8 +848,10 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2022-09-01",
+      {
       "name": "[format('get-naming-convention-{0}', parameters('deploymentNameSuffix'))]",
-      "location": "[deployment().location]",
+      "location": "[deployment().location]"
+    }
       "properties": {
         "expressionEvaluationOptions": {
           "scope": "inner"
